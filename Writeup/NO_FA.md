@@ -24,7 +24,7 @@ if 'username' not in session or session['logged'] == 'false':
     return redirect(url_for('login'))
 ```
 
-หน้าที่ 2 คือ /login ระบบจะทำการรับ username และ password เข้ามาและทำการเช็คใน database ว่ามี username นี้ไหมถ้ามีจะดึงข้อมูลมาเก็บไว้ในตัวแปร user และนำไปเช็ค password ด้วยการนำ password ที่ user กรอกเข้ามาไป compare กันว่าตรงกันมั้ยถ้าตรงระบบจะไปเช็คต่อว่า user นั้นต้องการ two fa ในการเข้าใช้งานไหมถ้าใช่ระบบจะ random เลข OTP ขึ้นมาและเก็บไว้ที่ session ของเว็ปและนี่คือจุดตายที่เราจะสามารถเข้าใช้งานโดยที่เราไม่ต้องมี gmail ให้ระบบส่ง OTP ไปให้ก็ได้คับ
+หน้าที่ 2 คือ /login ระบบจะทำการรับ username และ password เข้ามาและทำการเช็คใน database ว่ามี username นี้ไหมถ้ามีจะดึงข้อมูลมาเก็บไว้ในตัวแปร user และนำไปเช็ค password ด้วยการนำ password ที่ user กรอกเข้ามาไป compare กันว่าตรงกันมั้ยถ้าตรงระบบจะไปเช็คต่อว่า user นั้นต้องการ two fa ในการเข้าใช้งานไหมถ้าใช่ระบบจะ random เลข OTP ขึ้นมาและเก็บไว้ที่ session ของเว็บและนี่คือจุดตายที่เราจะสามารถเข้าใช้งานโดยที่เราไม่ต้องมี gmail ให้ระบบส่ง OTP ไปให้ก็ได้คับ
 ``` python
 if user['two_fa']:
     # Generate OTP
@@ -44,7 +44,7 @@ if user['two_fa']:
 ![](../images/NO_FA/dbresult_1.png)
 
 ### step 2 Crack Admin Password
-ผททำการนำ password ของ admin ที่ hash ไว้ไปถอดรหัสด้วยเว็ป [md5decrypt](https://md5decrypt.net/en/Sha256/) และได้ออกมาคือ `apple@123`
+ผททำการนำ password ของ admin ที่ hash ไว้ไปถอดรหัสด้วยเว็บ [md5decrypt](https://md5decrypt.net/en/Sha256/) และได้ออกมาคือ `apple@123`
 ![](../images/NO_FA/crack_password.png)
 
 ### step 3 Authenticate as Admin
@@ -52,7 +52,7 @@ if user['two_fa']:
 ![](../images/NO_FA/logedin.png)
 
 ### step 4 Decode Flask Session
-ผมทำการนำเอา session ที่ได้ไป decrypt ด้วย flask-unsign เพราะว่าตัวเว็ปใช้ flask ในการสร้างเว็ปและจัดการ session และผมก็ได้ข้อมูลของ OTP และอื่นๆออกมา
+ผมทำการนำเอา session ที่ได้ไป decrypt ด้วย flask-unsign เพราะว่าตัวเว็บใช้ flask ในการสร้างเว็บและจัดการ session และผมก็ได้ข้อมูลของ OTP และอื่นๆออกมา
 ``` bash
 ┌──(venv)─(kali㉿kali)-[~]
 └─$ flask-unsign --decode --cookie '.eJwty0sKgCAQANC7zFrCXwpeJoacRPCH2iq6ey7aPngPpBoCeXBwYRoEDOpsx6Cz01wouFC_zZhpTMwNnLDWKmPkLjetLZfKMLgH9YKZVkKfY4H3A0LkHFA.afB07A.Gqk9S8k41KTyMZ54KCCrylCjB6o'
