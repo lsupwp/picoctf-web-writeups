@@ -1,4 +1,4 @@
-# PicoCTF - Hashgate (Medium, Web Exploitation)
+# PicoCTF - Hashgate (Medium, Web Exploitation, picoCTF 2026)
 > You have gotten access to an organisation's portal. Submit your email and password, and it redirects you to your profile. But be careful: just because access to the admin isn’t directly exposed doesn’t mean it’s secure. Maybe someone forgot that obscurity isn’t security... Can you find your way into the admin’s profile for this organisation and capture the flag?
 
 ## Overview

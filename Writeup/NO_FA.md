@@ -1,4 +1,4 @@
-# PicoCTF - NO FA (Medium, Web Exploitation)
+# PicoCTF - NO FA (Medium, Web Exploitation, picoCTF 2026)
 > Seems like some data has been leaked! Can you get the flag?
 
 ## Overview
