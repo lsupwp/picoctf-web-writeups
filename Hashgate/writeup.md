@@ -8,7 +8,7 @@
 
 ## Vulnerability Analysis
 ผมได้ลอง Inspect ดูแล้วก็ได้เจอ email และ password ที่ฝังไว้ในหน้าเว็บ `<!-- Email: guest@picoctf.org Password: guest -->`
-![](../images/Hashgate/hidden_credential.png)
+![](./images/hidden_credential.png)
 
 ผมเลยทำการลองใช้ login ดูและมันก็สามารถเข้าได้ซึ่งสิ่งที่เขาโชว์คือ ID อะไรซักอย่างคาดเดาว่าจะเป็น ID ของ user ที่เราเข้าถึง
 ```
@@ -24,12 +24,12 @@ http://crystal-peak.picoctf.net:64706/profile/user/e93028bdc1aacdfb3687181f20317
 ## Exploitation Steps
 ### Step 1 Hash Identification
 อันดับแรกผมทำการใช้ hash-identifier เพื่อหาว่าค่า hash ที่น่าสงสัยนั้นคือการเข้ารหัสแบบไหน
-![](../images/Hashgate/hash_identifier.png)
+![](./images/hash_identifier.png)
 ผลลัพธ์ที่ได้คือ `md5`
 
 ### Step 2 Hash Resolution (Lookup)
 ผมนำเอาค่า hash ที่ได้ไป decrypt ด้วยเว็บ [md5decrypt](https://md5decrypt.net/en/) แล้วได้ออกมาคือ `3000`
-![](../images/Hashgate/decrypt_hash.png)
+![](./images/decrypt_hash.png)
 ซึ่งค่าตรงกับ ID ที่แสดงในหน้าเว็บพอดี
 
 ### Step 3 ID Enumeration via Brute Force

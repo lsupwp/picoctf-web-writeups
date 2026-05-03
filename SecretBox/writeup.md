@@ -72,7 +72,7 @@ api `/secrets/create` คือ api สำหรับสร้าง secret โ
 
 ### Step 1 Account Registration & Initial Access
 ผมทำการสร้าง account เพื่อที่จะทำให้ผมเพิ่ม secret ได้
-![](../images/SecretBox/loged_in.png)
+![](./images/loged_in.png)
 
 ### Step 2 Exploiting SQL Injection to Overwrite Admin Password
 ผมทำการเพิ่ม secret โดยใช้ payload ตามนี้คือ
@@ -80,9 +80,9 @@ api `/secrets/create` คือ api สำหรับสร้าง secret โ
 test'); UPDATE users SET password='test' WHERE username='admin' -- 
 ```
 เพื่อทำการ update ค่า password ของ admin ให้เราสามารถเข้าใช้งาน account ของ admin ได้ (db เก็บ password เป็น plaintext เลยทำให้เราสามารถแก้ไขค่า password ได้โดยตรงโดยไม่ต้องเข้ารหัสใดๆเลย)
-![](../images/SecretBox/exploit.png)
+![](./images/exploit.png)
 
 ### Step 3 Admin Account Takeover & Flag Retrieval
 ทำการ login เข้า account ของ admin เพื่อที่จะเอาค่า flag ออกมา
-![](../images/SecretBox/get_flag.png)
+![](./images/get_flag.png)
 และค่า flag ที่ได้คือ `picoCTF{sq1_1nject10n_a8db399d}`

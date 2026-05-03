@@ -90,4 +90,4 @@ Using the correct credentials, I successfully logged in and retrieved the flag:
 picoCTF{xff_byp4ss_brut3_473b3fdd}
 ```
 
-![](../images/Crack_the_Gate_2/bruted.png)
+![](./images/bruted.png)

@@ -1,4 +1,4 @@
-# Fool the Lockout
+# Fool the Lockout (Medium, Web Exploitation)
 > Your friend is building a simple website with a login page.
 > To stop brute forcing and credential stuffing, they’ve added an IP-based rate limit: exceed the attempt threshold and your IP is blocked for a while. They’re convinced this makes guessing credentials impossible.
 > To test their defense, they’ve:
@@ -33,7 +33,7 @@ server ใช้ `request.remote_addr` ในการดึงค่า source 
 ส่งผลให้สามารถทำ brute force ได้โดยไม่ติด rate limit
 
 ## Exploitation Steps
-### Step 1
+### Step 1 Credential Parsing & Brute Force Script Preparation
 ผมได้ทำการเขียน script ในการ brute force username และ password โดยนำข้อมูลจากไฟล์ `creds-dump.txt` ที่โจทย์ให้มา
 ``` python
 import subprocess
@@ -93,12 +93,12 @@ for idx, l in enumerate(lines):
 ต่อมาเราทำการ loop แต่ละ username และ password ออกมาและเรียกใช้คำสั่ง `torsocks --isolate curl -s -X POST -d username=<username>&password=<password> http://candy-mountain.picoctf.net:55783/login` เพื่อที่จะทำการ brute force และเข้าใช้งานระบบโดยที่
 - Flag --isolate จะทำการสุ่ม SOCKS Credentials ชุดใหม่ในทุกครั้งที่รันคำสั่ง เพื่อบังคับให้ Tor Network แยก Circuit ของ Traffic นั้นออกจากรายการอื่น ส่งผลให้ข้อมูลไม่ออกจาก Exit Node ตัวเดิม และป้องกันการเชื่อมโยงข้อมูล (Identity Linkability)
 
-### Step 2
+### Step 2 Distributed Brute Force via Tor Network
 
 ผมได้ทำการ run script ข้างต้นและได้ username และ password ที่ถูกต้องออกมา
-![](../images/Fool_the_Lockout/brute.png)
+![](./images/brute.png)
 
-### Step 3
+### Step 3 Successful Authentication & Flag Retrieval
 
 นำ username และ password ที่ได้ไปทำการ login และ flag ที่ได้คือ `picoCTF{f00l_7h4t_l1m1t3r_9ea694c6}`
-![](../images/Fool_the_Lockout/logedin.png)
+![](./images/logedin.png)

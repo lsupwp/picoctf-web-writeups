@@ -41,15 +41,15 @@ if user['two_fa']:
 ## Exploitation Steps
 ### Step 1 Extract Credentials from Database
 ผมทำการเข้าไปอ่านโค๊ดและอ่านไฟล์ db ที่ โจทย์ให้แล้วไปเจอ username และ password ของ admin (password ทำการเข้ารหัสด้วย sha256 อยู่)
-![](../images/NO_FA/dbresult_1.png)
+![](./images/dbresult_1.png)
 
 ### step 2 Crack Admin Password
 ผททำการนำ password ของ admin ที่ hash ไว้ไปถอดรหัสด้วยเว็บ [md5decrypt](https://md5decrypt.net/en/Sha256/) และได้ออกมาคือ `apple@123`
-![](../images/NO_FA/crack_password.png)
+![](./images/crack_password.png)
 
 ### step 3 Authenticate as Admin
 ผมนำเอา username และ password ที่ได้ไปทำการ login ผลสรุปคือ username และ password ถูกต้องและเราสามารถเข้าหน้ากรอก OTP ได้และเราก็เห็น session ที่ระบบ generate มาให้ด้วย
-![](../images/NO_FA/logedin.png)
+![](./images/logedin.png)
 
 ### step 4 Decode Flask Session
 ผมทำการนำเอา session ที่ได้ไป decrypt ด้วย flask-unsign เพราะว่าตัวเว็บใช้ flask ในการสร้างเว็บและจัดการ session และผมก็ได้ข้อมูลของ OTP และอื่นๆออกมา
@@ -61,4 +61,4 @@ if user['two_fa']:
 
 ### step 5 Bypass 2FA
 ผมทำการนำเอา OTP ที่ได้ไปกรอกและเราก็เจอ flag เลย flag คือ `picoCTF{n0_r4t3_n0_4uth_487507fc}`
-![](../images/NO_FA/found_flag.png)
+![](./images/found_flag.png)
